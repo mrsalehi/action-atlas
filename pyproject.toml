@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "action_atlas"
+version = "1.0.0"
+description = "ActionAtlas VideoQA Benchmark"
+authors = [
+    { name="ActionAtlas team", email="mrsalehi@cs.washington.edu" }
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "tqdm",
+    "loguru",
+    "opencv-python",
+    "openai",
+    "google-cloud-vision",
+    "regex",
+    "pillow",
+    "wget",
+    "google-cloud-storage",
+]
+[project.urls]
+"Homepage" = "https://github.com/username/action_atlas"
+
+[tool.setuptools.packages.find]
+where = ["."]
