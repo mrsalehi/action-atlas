@@ -1,4 +1,4 @@
-GPT4_GET_DESCRIPTIONS="""I give you five action names in sport {sport} and you have to describe that action in two to three sentences. Try to be concise but accurate and cover the important and unique characteristics of each action. Separate the descriptions with two new lines. Don't write the action number and name before the description just description separated by two new lines.\n{options}"""
+GPT4_GET_DESCRIPTIONS="""I give you five action names in sport {sport} and you have to describe that action in two to three sentences. Try to be concise but accurate and cover the important and unique characteristics of each action. Separate the descriptions with two new lines. Don't write the action number and name before the description just description separated by two new lines.\n{choices}"""
 
 GPT4_GET_DIFFERENCE_WITH_HARD_NEGATIVES="""I give you an action name in a sport and 9 hard negatives for it. You have to write the difference between the action and the hard negatives.
 The difference should be no more than two to three sentences. Focus on the very key elements that differentiate the action from the hard negatives. I'm not an expert in sports so explain it in a way that a non-expert can understand.
@@ -41,15 +41,17 @@ HARD_NEGATIVES: {hard_negatives}
 RESPONSE:
 """
 
-MC_PROMPT ="""Answer the given question according to the video presented as a sequence of frames. Only output the choice number and nothing else. When answering the question consider all legal and illegal moves and drills.\n{question}\n{options}"""
+## eval prompts
+MC_PROMPT ="""Answer the given question according to the video. Only output the choice number and nothing else. When answering the question consider all legal and illegal moves and drills.\n{question}\n{choices}"""
 
-MC_WITH_DESCRIPTION ="""Answer the given question according to the video presented as a sequence of frames. Each choice presents an action name along with its description which helps in identification. Only output the choice number and nothing else. When answering the question consider all legal and illegal moves and drills.\n{question}\n{options}"""
+MC_WITH_DESCRIPTION_PROMPT ="""Answer the given question according to the video. Each choice presents an action name along with its description which helps in identification. Only output the choice number and nothing else. When answering the question consider all legal and illegal moves and drills.\n{question}\n{choices}"""
 
-MC_WITH_DESCRIPTION_COT ="""Answer the given question according to the video presented as a sequence of frames. Each choice presents an action name along with its description which helps in identification. You can describe the video or do any step by step reasoning about what you see in the video and the choices. However, output your final choice number (1 to 5) at the end of your response in a new line. When answering the question consider all legal and illegal moves and drills.\n{question}\n{options}"""
+MC_WITH_DESCRIPTION_COT_PROMPT ="""Answer the given question according to the video. Each choice presents an action name along with its description which helps in identification. You can describe the video or do any step by step reasoning about what you see in the video and the choices. However, output your final choice number (1 to 5) at the end of your response in a new line. When answering the question consider all legal and illegal moves and drills.\n{question}\n{choices}"""
 
-MC_COT = """Answer the given question according to the video. You can describe the video or do any step by step reasoning about what you see in the video. However, output your final choice number (1 to 5) at the end of your response in a new line.\n{question}\n{options}"""
+MC_COT_PROMPT = """Answer the given question according to the video. You can describe the video or do any step by step reasoning about what you see in the video. However, output your final choice number (1 to 5) at the end of your response in a new line.\n{question}\n{choices}"""
 
-MC_STEP_BY_STEP_ACROSS_FRAMES="""Answer the given question according to the video presented as a sequence of frames. Each chioce presents an action name along with its description which helps in identification. You must do step by step reasoning across frames and describe the changes that happen between each two consecutive frames. You can also do step by step reasoning about options and why they might be correct or wrong. However, output your final choice number (1 to 5) at the end of your response in a new line.\n{question}\n{options}. Let's think step by step across frames:"""
+MC_STEP_BY_STEP_ACROSS_FRAMES_PROMPT="""Answer the given question according to the video. Each chioce presents an action name along with its description which helps in identification. You must do step by step reasoning across frames and describe the changes that happen between each two consecutive frames. You can also do step by step reasoning about choices and why they might be correct or wrong. However, output your final choice number (1 to 5) at the end of your response in a new line.\n{question}\n{choices}. Let's think step by step across frames:"""
+##
 
 GPT4_WRITE_HARD_NEGATIVES="""Write some hard negatives for move {action} in sport {domain}.
 The negatives should be plausible and EXTREMELY hard to distinguish from the correct answer. However, THEY MUST BE WRONG AND DIFFERENT from the correct one. Also, the hard negatives must be well-known {domain} moves.
