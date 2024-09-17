@@ -13,6 +13,7 @@ import tempfile
 import math
 from multiprocessing import Pool
 from io import BytesIO
+from collections import defaultdict
 
 import numpy as np
 import yaml
@@ -784,27 +785,41 @@ def compute_final_accuracy_with_cot_reasoning(
     return res
 
 
-def compute_gemini_refusal_rate(preds_fpath: Union[str, Path]):
-    """Gemini classifies many of the data points as harmful and returns
-    the safety ratings. This function calculates the refusal rates based
-    on that.
-    
-    should check `response.prompt_feedback` in returned responses as well.
-    """
-    preds = read_jsonl(preds_fpath)
-    safety_refusals = 0
+def analyze_gemini_refusals(jsonl_preds_fpath: str):
     total_errors = 0
+    data = read_jsonl(jsonl_preds_fpath)
+    all_errors = defaultdict(int)
+    for d in data:
+        if "error" in d:
+            total_errors += 1
+            error = d["error"]
+            try:
+                if error.startswith("Failed to generate content. "):
+                    error = error[len("Failed to generate content. "):]
+                    if "PROMPT_FEEDBACK" in error or error.startswith("Invalid operation: The `response.parts`"):
+                        all_errors['other'] += 1
+                    elif "500 An internal error has occurred." in error:
+                        all_errors['other'] += 1
+                    else:
+                        assert 'SAFETY' in error
+                        error = json.loads(error)
+                        error = error['SAFETY']
+                        non_negligible = False
+                        for k, v in error.items():
+                            if v != 'NEGLIGIBLE':
+                                all_errors[k] += 1
+                                non_negligible = True
+                                break
+                        if non_negligible is False:
+                            all_errors['other'] += 1
+                else:
+                    raise Exception(f"Unexpected error: {error}")
+            except Exception as e:
+                logger.error(f"Exception happened when evaluating error/refusal {error}: {e}")
+                break
 
-    for pred in preds:
-        if "error" in pred:
-            if "SAFETY" in pred["error"]:
-                safety_refusals += 1
-        if pred["response"] == "-1":
-            total_errors +=1
-
-    logger.info(f"Preds fpath: {preds_fpath}") 
-    logger.info(f"Number of safety refusals: {safety_refusals} ({(safety_refusals / len(preds)) * 100:.2f}%)") 
-    logger.info(f"Toal errors: {total_errors} ({(total_errors / len(preds)) * 100:.2f}%)")
+    logger.info(f"All errors: {all_errors}")
+    logger.info(f"Total errors: {total_errors}")
 
 
 if __name__ == "__main__":
