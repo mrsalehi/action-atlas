@@ -1,0 +1,433 @@
+<!--  ALL THINGS THAT STILL NEED TO BE FIXED ARE TAGGED BY "TODO: "
+      FOR EXAMPLE,
+      TODO: REMOVE THIS MESSAGE
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ActionAtlas">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ActionAtlas</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero banner">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ActionAtlas: A VideoQA Benchmark for Fine-grained Action Recognition</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~mrsalehi/">Mohammadreza Salehi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~jspark96/">Jae Sung Park</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://tanu.sh/">Tanush Yadav</a><sup>1</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://adityakusupati.github.io/">Aditya Kusupati</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ranjaykrishna.com/">Ranjay Krishna</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~yejin/">Yejin Choi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~hannaneh/">Hannaneh Hajishirzi</a><sup>1,2</sup>
+            </span>
+            <span class="author-block"></span>
+              <a href="https://homes.cs.washington.edu/~ali/">Ali Farhadi</a><sup>1,2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-institutions">
+            <span class="author-block"><sup>1</sup>University of Washington,</span>
+            <span class="author-block"><sup>2</sup>Allen Institute for AI</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="TODO: insert link to pdf on ArXiV here"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="TODO: insert link to arxiv abstract here"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="TODO: remove this link OR insert link to video if one exists"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/mrsalehi/action-atlas"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/mrsalehi/ActionAtlas-v1.0"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <!-- <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span> -->
+                  <span>🤗 Data</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure class="">
+        <img src="./static/images/side_kick.jpg" alt="A storyboard consisting of 7 frames from a clip of of a side kick.">
+      </figure>
+      <p class="is-family-monospace has-text-centered example-question">
+        What best describes the move performed by the man wearing a white shirt and gray shorts?
+      </p>
+      <p class="is-family-monospace has-text-centered">
+        <span class="has-text-danger">
+          1. Axe kick &nbsp;&nbsp;&nbsp;&nbsp; 
+          2. Push kick &nbsp;&nbsp;&nbsp;&nbsp;
+          3. Roundhouse kick &nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="has-text-success">
+          4. Side Kick &nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span  class="has-text-danger">
+          5. Hook kick
+        </span>
+      </p>
+    </div>
+    <div class="hero-body">
+      <h2 class="subtitle is-4 has-text-centered">
+        <span class="dnerf">ActionAtlas</span> assesses a model's ability to recognize fine-grained actions in sports.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section has-background-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our world is full of varied actions and moves in specialized fields that we, as humans, strive to identify and learn about. To evaluate the effectiveness of multi-modal models in helping us recognize such fine-grained actions, we introduce <span class="dnerf">ActionAtlas</span> v1.0, a multiple-choice video question answering benchmark on fine-grained action recognition with short videos across various sports. 
+          </p>
+          <p>
+            ActionAtlas contains <b>934 videos spanning 580 fine-grained actions across 56 sports</b> with 1896 actions as total potential choices. Unlike most existing action recognition benchmarks that focus on simplistic actions, often identifiable from a single frame, ActionAtlas focuses on intricate movements that test the models' ability to discern subtle differences. Additionally, each video in ActionAtlas includes a unique question which helps pinpoint the action's performer in scenarios where multiple individuals are performing different actions. 
+          </p>
+          <p>
+            We evaluate both open and proprietary foundation models on this benchmark, finding that the <b>state-of-the-art models achieve a maximum accuracy of 45.52%</b>. <b>Non-expert crowd workers can reach 61.62% accuracy</b> when provided with action descriptions for each choice. For reference, random chance is close to 21%.
+          </p>
+          <p>
+            Furthermore, our results show that a high frame sampling rate is essential for recognizing actions in ActionAtlas, a feature that current top proprietary models like Gemini lack in their default settings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<!-- Examples Boilerplate -->
+<section class="hero has-background-white">
+  <div class="container is-max-desktop overarching">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Examples</h2>
+        <div class="tabs is-centered is-toggle">
+          <ul>
+            <li class="is-active" data-tab="basketball"><a>Basketball</a></li>
+            <li data-tab="football"><a>Football</a></li>
+            <li data-tab="cricket"><a>Cricket</a></li>
+            <li data-tab="soccer"><a>Soccer</a></li>
+            <!-- <li data-tab="bmx"><a>BMX</a></li> -->
+            <li data-tab="figure"><a>Figure Skating</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered is-vcentered">
+      <div class="column is-two-thirds">
+        <div id="example_video_parent">
+          <video id="example_video" src="./static/videos/basketball.mp4" autoplay controls muted playsinline height="100%"></video>
+        </div>
+      </div>
+      <div class="column is-one-third answers">
+        <p id="example_question" class="is-family-monospace has-text-centered has-text-black">What best describes the move made by the man in a black basketball jersey with the number two?</p>
+        <br>
+        <p id="example_answer_0" class="is-family-monospace has-text-centered has-text-danger">1. Tip-in</p>
+        <p id="example_answer_1" class="is-family-monospace has-text-centered has-text-success">2. Putback dunk</p>
+        <p id="example_answer_2" class="is-family-monospace has-text-centered has-text-danger">3. Alley-oop Dunk</p>
+        <p id="example_answer_3" class="is-family-monospace has-text-centered has-text-danger">4. Tomahawk Dunk</p>
+        <p id="example_answer_4" class="is-family-monospace has-text-centered has-text-danger">5. Windmill Dunk</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Examples Boilerplate -->
+
+<!-- Examples Content & Logic -->
+<!-- To add BMX example back, put the following line of JavaScript in  -->
+<!--  examples.set("bmx", ["What best describes the move performed by the biker?", 0, ["Tuck no-hander", "Superman", "Barspin", "X-up", "Wheelie"]]) -->
+<script>
+  const examples = new Map()
+  examples.set("basketball", ["What best describes the move made by the man in a black basketball jersey with the number two?", 1, ["Tip-in", "Putback dunk", "Alley-oop Dunk", "Tomahawk Dunk", "Windmill Dunk"]]);
+  examples.set("cricket", ["What best describes the move made by the player in white uniform?", 1, ["Square Cut", "Cover drive", "Cut Shot", "Straight Drive", "Pull Shot"]]);
+  examples.set("football", ["What best describes the move made by the person wearing a black jersey with the number 93 on it?", 4, ["Fumble recovery", "Forced fumble", "Pass deflection", "Tackle for loss", "Quarterback sack"]])
+  examples.set("soccer", ["What best describes the move made by the player wearing a red jersey with the number 10 on his back?", 3, ["Outside Foot Curl", "Nutmeg", "Heel Flick", "Rabona", "Rainbow Flick"]])
+  examples.set("figure", ["What best describes the move performed by the girl in the video?", 2, ["Double Salchow jump", "Quad jump", "Double flip jump", "Camel spin", "Double axel jump"]])
+  let curr_correct = 1
+
+  document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.tabs li');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+              tabs.forEach(item => item.classList.remove('is-active'));
+              tab.classList.add('is-active');
+              const tabId = tab.getAttribute('data-tab');
+              const tabInfo = examples.get(tabId)
+
+              const prev_correct = document.getElementById("example_answer_" + curr_correct)
+              prev_correct.classList.remove("has-text-success");
+              prev_correct.classList.add("has-text-danger");
+
+              document.getElementById("example_question").textContent = tabInfo[0];
+              document.getElementById("example_answer_0").textContent = "1. " + tabInfo[2][0];
+              document.getElementById("example_answer_1").textContent = "2. " + tabInfo[2][1];
+              document.getElementById("example_answer_2").textContent = "3. " + tabInfo[2][2];
+              document.getElementById("example_answer_3").textContent = "4. " + tabInfo[2][3];
+              document.getElementById("example_answer_4").textContent = "5. " + tabInfo[2][4];
+              
+              curr_correct = tabInfo[1];
+              const correct_elem = document.getElementById("example_answer_" + curr_correct);
+              if (correct_elem.classList.contains('has-text-danger')) correct_elem.classList.remove("has-text-danger");
+              correct_elem.classList.add('has-text-success');
+
+              document.getElementById("example_video").setAttribute('src', './static/videos/' + tabId + '.mp4');
+          });
+      });
+  });
+</script>
+<!--/ Examples Content & Logic -->
+
+<!-- Leaderboard -->
+<section class="section has-background-light" style="padding-bottom:1rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Leaderboard</h2>
+        <p>For reference, non-expert humans attain 61.62% accuracy, while random chance gets 20.88%.</p>
+        
+        <br>
+
+        <h3 class="subtitle is-5">Open-source models</h3>
+        <table class="table is-hoverable has-background-light">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Input Frames (#)</th>
+              <th>Input Video Tokens (#)</th>
+              <th>Inference TFLOPs (#)</th>
+              <th>Accuracy (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Qwen2-VL-7B</th>
+              <th>16</th>
+              <th>8 x 576</th>
+              <th>13.38</th>
+              <th>30.24</th>
+            </tr>
+            <tr>
+              <th>CLIP ViT-L-14-336</th>
+              <th>16</th>
+              <th>16 x 576</th>
+              <th>-</th>
+              <th>23.71</th>
+            </tr>
+            <tr>
+              <th>VideoLLaMA</th>
+              <th>16</th>
+              <th>16 x 256</th>
+              <th>6.12</th>
+              <th>22.71</th>
+            </tr>
+            <tr>
+              <th>VideoChat2</th>
+              <th>64</th>
+              <th>64 x 196</th>
+              <th>43.0</th>
+              <th>21.27</th>
+            </tr>
+            <tr>
+              <th>mPLUG-Owl-Video</th>
+              <th>16</th>
+              <th>16 x 256</th>
+              <th>2.94</th>
+              <th>19.49</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section has-background-light" style="padding-top:0rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-half">
+        <h3 class="subtitle is-5">Proprietary models</h3>
+        <table class="table is-hoverable has-background-light">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Input Frames (#)</th>
+              <th>Accuracy (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>GPT-4o</th>
+              <th>16*</th>
+              <th>42.95</th>
+            </tr>
+            <tr>
+              <th>Gemini 1.5 Pro</th>
+              <th>all frames**</th>
+              <th>35.59</th>
+            </tr>
+            <tr>
+              <th>GPT-4 Turbo</th>
+              <th>8</th>
+              <th>34.25</th>
+            </tr>
+            <tr>
+              <th>GPT-4o-mini</th>
+              <th>4</th>
+              <th>33.42</th>
+            </tr>
+            <tr>
+              <th>Gemini 1.5 Pro</th>
+              <th>1 fps</th>
+              <th>32.37</th>
+            </tr>
+            <tr>
+              <th>Gemini 1.5 Flash</th>
+              <th>1 fps</th>
+              <th>30.49</th>
+            </tr>
+          </tbody>
+        </table>
+        <p class="is-size-7">*GPT models were tested on 1, 4, 8, 16, and 32 input frames. The best configuration for each model is reported above. See paper for full results.</p>
+        <br>
+        <p class="is-size-7">**By reformatting clips so that each (original) frame takes up one second apiece, we exploited Gemini's 1 fps sampling to feed it all available frames from a video.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--/ Leaderboard -->
+
+
+<section class="section has-background-white" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{salehi2024actionatlas,
+  author    = {Salehi, Mohammadreza and Park, Jae Sung and Yadav, Tanush and Kusupati, Aditya and Krishna, Ranjay and Choi, Yejin and Hajishirzi, Hannaneh and Farhadi, Ali},
+  title     = {ActionAtlas: A VideoQA Benchmark for Fine-grained Action Recognition},
+  journal   = {NeurIPS},
+  year      = {2024}
+}
+</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container is-flex is-justify-content-center is-align-items-center my-4">
+    <a href="https://raivn.cs.washington.edu/">
+      <figure class="image"><img style="width:50%; max-width:140px;" src="./static/images/raivn.png" alt="Logo of the UW RAVIN Lab"></figure>
+    </a>
+    <a href="https://www.cs.washington.edu/">
+     <figure class="image"> <img style="width:50%; max-width:140px;" src="./static/images/cse.jpg" alt="Logo of Paul G. Allen School of Computer Science & Engineering at the University of Washington"></figure>
+    </a>
+    <a href="https://allenai.org/">
+      <figure class="image"><img style="width: 50%; max-width:150px;" src="./static/images/ai2.png" alt="Logo of the Allen Institute for AI"></figure>
+    </a>
+  </div>
+
+  <div class="container is-flex is-flex-direction-column is-align-items-center my-4">
+    <br>
+    <p class="mt-4 has-text-centered">
+      This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+    <p>
+      It is based on the website for the <a
+      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> paper, which is also licensed under CC BY-SA 4.0. 
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

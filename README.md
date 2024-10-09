@@ -1,48 +1,16 @@
-# action-atlas
+# Nerfies
 
-[[Website]]()
-[![arXiv](https://img.shields.io/badge/arXiv-2104.00001-red.svg)](https://arxiv.org/abs/2104.00001)
+This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
 
-This is the official repository for the ActionAtlas benchmark. The benchmark evaluates large multimodal-models on videos of complex actions in specialized domains. This first version of the benchmark focuses on sports moves.
-
-
-
-## Installation
-You can install the package from source with pip or poetry:
-```bash
-pip install -e .
+If you find Nerfies useful for your work please cite:
+```
+@article{park2021nerfies
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}
 ```
 
-## Usage
-1. Download the metadta either from this [google drive](https://drive.google.com/file/d/1ueh5gqYg0WqQ_CFxjxsjcn8rx9wwN9Gi/view?usp=drive_link) or from [HuggingFace](https://huggingface.co/datasets/action_atlas)
-
-2. Each sample in the metadata contains a YouTube ID and the metadata of that video. Download the video from YouTube. Please take a look at `action_atlas/download_yt_videos.py` provided in this repo.
-
-3. Extract ActionAtlas video segments from the original videos using `action_atlas/extract_segments.py`:
-```bash
-python action_atlas/extract_segments.py \
-    --data_fpath /path/to/metadata.json \
-    --yt_videos_dir /path/to/downloaded_yt_videos \
-    --out_segments_dir /path/to/output_dir/for/segments \
-    --max_workers 32
-```
-
-4. There is text on some of the videos that leak information about the action. We have already found polygons obfuscating the text using Google Cloud Vision API and provided them in the metadata. You can reused them to obfuscate text by running `action_atlas/obfuscate_text.py`:
-```bash
-python action_atlas/obfuscate_text.py  \
-    obfuscate_text_in_videos_with_masks \
-    --data_fpath /path/to/metadata.json \
-    --video_segments_dir /path/to/extracted_segments \
-    --out_dir /path/to/output_dir/for/final/segments/including/obfuscated \
-    --max_workers 32
-```
-Note that after running the above command all videos in ActionAtlas will be stored in `out_dir`, including those with obfuscated text.
-
-5. We have provided example script to evaluate both proprietary and open models. Please take a look at `action_atlas/eval_proprietary.py` and `action_atlas/eval_qwen2_vl.py`.
-
-
-## Citation
-If you use this dataset in your research, please cite the following paper:
-```
-
-```
+# Website License
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
