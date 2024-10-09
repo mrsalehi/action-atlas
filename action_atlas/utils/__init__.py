@@ -16,3 +16,9 @@ from .video_utils import (
     resolve_media_path,
     reencode_video
 )
+
+from .eval_utils import (
+    bootstrap_confidence_interval_accuracy,
+    compute_final_accuracy,
+    compute_final_accuracy_with_cot_reasoning
+)

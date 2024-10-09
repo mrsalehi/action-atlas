@@ -334,7 +334,7 @@ def obfuscate_text_in_videos_with_masks(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--function", type=str, 
+    parser.add_argument("function", type=str,
                         choices=["obfuscate_text_in_videos_gcloud_vision_api", "obfuscate_text_in_videos_with_masks"],
                         help="Choose which function to run",
                         default="obfuscate_text_in_videos_with_masks")

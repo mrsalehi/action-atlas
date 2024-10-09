@@ -21,6 +21,11 @@ dependencies = [
     "pillow",
     "wget",
     "google-cloud-storage",
+    "transformers",
+    "torch",
+    "torchvision",
+    "qwen_vl_utils",
+    "fvcore",
 ]
 [project.urls]
 "Homepage" = "https://github.com/username/action_atlas"
