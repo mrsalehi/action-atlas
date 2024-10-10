@@ -1,7 +1,7 @@
-# action-atlas
+# ActionAtlas (NurIPS 2024 D&B)
 
-[[Website]]()
-[![arXiv](https://img.shields.io/badge/arXiv-2104.00001-red.svg)](https://arxiv.org/abs/2104.00001)
+[[Website]](https://mrsalehi.github.io/action-atlas/)
+[![arXiv](https://img.shields.io/badge/arXiv-2104.00001-red.svg)](https://arxiv.org/abs/2410.05774)
 
 This is the official repository for the ActionAtlas benchmark. The benchmark evaluates large multimodal-models on videos of complex actions in specialized domains. This first version of the benchmark focuses on sports moves.
 
@@ -44,5 +44,13 @@ Note that after running the above command all videos in ActionAtlas will be stor
 ## Citation
 If you use this dataset in your research, please cite the following paper:
 ```
-
+@misc{salehi2024actionatlasvideoqabenchmarkdomainspecialized,
+      title={ActionAtlas: A VideoQA Benchmark for Domain-specialized Action Recognition}, 
+      author={Mohammadreza Salehi and Jae Sung Park and Tanush Yadav and Aditya Kusupati and Ranjay Krishna and Yejin Choi and Hannaneh Hajishirzi and Ali Farhadi},
+      year={2024},
+      eprint={2410.05774},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2410.05774}, 
+}
 ```
