@@ -1,4 +1,4 @@
-# ActionAtlas (NurIPS 2024 D&B)
+# ActionAtlas (NeurIPS 2024 D&B)
 
 [[Website]](https://mrsalehi.github.io/action-atlas/)
 [![arXiv](https://img.shields.io/badge/arXiv-2104.00001-red.svg)](https://arxiv.org/abs/2410.05774)
