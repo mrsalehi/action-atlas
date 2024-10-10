@@ -97,6 +97,12 @@ body {
   display: inline-block;
 }
 
+.conf {
+  font-size: 25px;
+  margin-top: 20px;
+  color: #ff3860;
+}
+
 .publication-video {
     position: relative;
     width: 100%;

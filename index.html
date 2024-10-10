@@ -37,7 +37,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">ActionAtlas: A VideoQA Benchmark for Fine-grained Action Recognition</h1>
+          <h1 class="title is-1 publication-title">ActionAtlas: A VideoQA Benchmark for Domain-specialized Action Recognition</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://homes.cs.washington.edu/~mrsalehi/">Mohammadreza Salehi</a><sup>1</sup>,</span>
@@ -68,6 +68,9 @@
             <span class="author-block"><sup>1</sup>University of Washington,</span>
             <span class="author-block"><sup>2</sup>Allen Institute for AI,</span>
             <span class="author-block"><sup>3</sup>Nvidia</span>
+          </div>
+          <div class="conf">
+            NeurIPS 2024 (D&B)
           </div>
 
           <div class="column has-text-centered">
@@ -167,16 +170,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Our world is full of varied actions and moves in specialized fields that we, as humans, strive to identify and learn about. To evaluate the effectiveness of multi-modal models in helping us recognize such fine-grained actions, we introduce <span class="dnerf">ActionAtlas</span> v1.0, a multiple-choice video question answering benchmark on fine-grained action recognition with short videos across various sports. 
+            Our world is full of varied actions and moves across specialized domains that we, as humans, strive to identify and understand. Within any single domain, actions can often appear quite similar, making it challenging for deep models to distinguish them accurately. To evaluate the effectiveness of multimodal foundation models in helping us recognize such actions, we present ActionAtlas v1.0, a multiple-choice video question answering benchmark featuring short videos across various sports.
           </p>
           <p>
-            ActionAtlas contains <b>934 videos spanning 580 fine-grained actions across 56 sports</b> with 1896 actions as total potential choices. Unlike most existing action recognition benchmarks that focus on simplistic actions, often identifiable from a single frame, ActionAtlas focuses on intricate movements that test the models' ability to discern subtle differences. Additionally, each video in ActionAtlas includes a unique question which helps pinpoint the action's performer in scenarios where multiple individuals are performing different actions. 
+            Each video in the dataset is paired with a question and four or five choices. The question pinpoints specific individuals, asking which choice "best" describes their action within a certain temporal context. Overall, the dataset includes 934 videos showcasing 580 unique actions across 56 sports, with a total of 1896 actions within choices. Unlike most existing video question answering benchmarks that only cover simplistic actions, often identifiable from a single frame, ActionAtlas focuses on intricate movements and rigorously tests the model's capability to discern subtle differences between moves that look similar within each domain.
           </p>
           <p>
-            We evaluate both open and proprietary foundation models on this benchmark, finding that the <b>state-of-the-art models achieve a maximum accuracy of 45.52%</b>. <b>Non-expert crowd workers can reach 61.62% accuracy</b> when provided with action descriptions for each choice. For reference, random chance is close to 21%.
-          </p>
-          <p>
-            Furthermore, our results show that a high frame sampling rate is essential for recognizing actions in ActionAtlas, a feature that current top proprietary models like Gemini lack in their default settings.
+            We evaluate open and proprietary foundation models on this benchmark, finding that the best model, GPT-4o, achieves a maximum accuracy of 45.52%. Meanwhile, Non-expert crowd workers, provided with action description for each choice, achieve 61.64% accuracy, where random chance is approximately 21%. Our findings with state-of-the-art models indicate that having a high frame sampling rate is important for accurately recognizing actions in ActionAtlas, a feature that some leading proprietary video models, such as Gemini, do not include in their default configuration.
           </p>
         </div>
       </div>
@@ -199,6 +199,9 @@
             <li data-tab="soccer"><a>Soccer</a></li>
             <!-- <li data-tab="bmx"><a>BMX</a></li> -->
             <li data-tab="figure"><a>Figure Skating</a></li>
+            <li data-tab="cheerleading"><a>Cheerleading</a></li>
+            <li data-tab="tennis"><a>Tennis</a></li>
+            <li data-tab="netball"><a>Netball</a></li>
           </ul>
         </div>
       </div>
@@ -227,13 +230,17 @@
 <!-- Examples Content & Logic -->
 <!-- To add BMX example back, put the following line of JavaScript in  -->
 <!--  examples.set("bmx", ["What best describes the move performed by the biker?", 0, ["Tuck no-hander", "Superman", "Barspin", "X-up", "Wheelie"]]) -->
+
 <script>
   const examples = new Map()
   examples.set("basketball", ["What best describes the move made by the man in a black basketball jersey with the number two?", 1, ["Tip-in", "Putback dunk", "Alley-oop Dunk", "Tomahawk Dunk", "Windmill Dunk"]]);
   examples.set("cricket", ["What best describes the move made by the player in white uniform?", 1, ["Square Cut", "Cover drive", "Cut Shot", "Straight Drive", "Pull Shot"]]);
-  examples.set("football", ["What best describes the move made by the person wearing a black jersey with the number 93 on it?", 4, ["Fumble recovery", "Forced fumble", "Pass deflection", "Tackle for loss", "Quarterback sack"]])
-  examples.set("soccer", ["What best describes the move made by the player wearing a red jersey with the number 10 on his back?", 3, ["Outside Foot Curl", "Nutmeg", "Heel Flick", "Rabona", "Rainbow Flick"]])
+  examples.set("football", ["What best describes the move made by the players wearing gold t-shirts who are not blocking white players?", 0, ["Flea flicker play", "Zone read", "Play-action pass", "Screen pass", "Reverse play"]])
+  examples.set("soccer", ["What best describes the move made by the player in black?", 0, ["Knuckleball Shot", "Chip shot", "Power shot", "Outside of the foot shot"]])
   examples.set("figure", ["What best describes the move performed by the girl in the video?", 2, ["Double Salchow jump", "Quad jump", "Double flip jump", "Camel spin", "Double axel jump"]])
+  examples.set("cheerleading", ["What best describes the move made by the cheerleader before she performs a back tuck?", 4, ["Tuck jump", "Pike jump", "Single toe touch", "Tripe toe touch", "Double toe touch"]])
+  examples.set("tennis", ["What best describes the move made by the person wearing a blue, white and black shirt?", 0, ["Windshield wiper forehand", "Inside-in forehand", "Half volley", "Forehand drive", "Sliced serve"]])
+  examples.set("netball", ["What best describes the movement executed by the shortest girl on the team?", 0, ["Front cut", "Back cut", "Fake and drive", "Pivot and Drive", "Straight lead"]])
   let curr_correct = 1
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -256,7 +263,13 @@
               document.getElementById("example_answer_1").textContent = "2. " + tabInfo[2][1];
               document.getElementById("example_answer_2").textContent = "3. " + tabInfo[2][2];
               document.getElementById("example_answer_3").textContent = "4. " + tabInfo[2][3];
-              document.getElementById("example_answer_4").textContent = "5. " + tabInfo[2][4];
+              // document.getElementById("example_answer_4").textContent = "5. " + tabInfo[2][4];
+              if (tabInfo[2].length < 5) {
+                  document.getElementById("example_answer_4").style.display = "none";
+              } else {
+                  document.getElementById("example_answer_4").style.display = "block";
+                  document.getElementById("example_answer_4").textContent = "5. " + tabInfo[2][4];
+              }
               
               curr_correct = tabInfo[1];
               const correct_elem = document.getElementById("example_answer_" + curr_correct);
@@ -276,7 +289,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Leaderboard</h2>
-        <p>For reference, non-expert humans attain 61.62% accuracy, while random chance gets 20.88%.</p>
+        <p>For reference, non-expert humans attain 61.64% accuracy, while random chance gets 20.91%.</p>
         
         <br>
 
