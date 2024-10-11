@@ -1,0 +1,998 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- BOOTSTRAP CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+        integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+        <!-- ICON CSS  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <!-- HITPUB CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.5/svg.min.js" integrity="sha256-QvaFssiJCr71CxCZfYVWAXXGlwAqXbXerSdoW2t/Few=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.7/chroma.min.js"></script>
+        <script src="https://cdn.rawgit.com/internalfx/distinct-colors/3bbd4cc2/dist/distinct-colors.min.js"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="verify.css"> -->
+        <style>
+            #hitinfo .card {
+                border-radius: 0;
+            }
+            #hitinfo button.btn-link {
+                color: #fff;
+                text-decoration: none;
+            }
+            #hitinfo button.btn-link:hover {
+                text-decoration: none;
+            }
+            #hitinfo ul.question-choice {
+                list-style-type: none;
+            }
+            #hitinfo #mturk_form .card {
+                background-color: inherit;
+            }
+            #hitinfo .accordion .card-header {
+                background-color: #06486F;
+            }
+
+            .instruction-header{
+                margin-bottom: 0;
+            }
+            
+            .example-header {
+                background-color: #06486F;
+                color: white;
+                margin-top: 20px;
+            }
+
+            .action-form {
+                margin-top: 20px;
+                margin-left: 10px;
+            }
+
+            .frames {
+                margin-left: 10px;
+            }
+
+            .action-header h4 {
+                margin-bottom: 0;
+            }
+
+            .frames h4 {
+                margin-bottom: 0;
+            }
+
+
+            .task-info{
+                margin-top: 20px;
+            }
+
+            .feedback-card {
+                margin-top: 20px;
+            }
+            label {
+                margin-top: .5rem;
+                margin-bottom: 0;
+            }
+
+            .consent-header {
+                background-color: rgba(200, 200, 200, 0.67);
+            }
+
+            .frames-container {
+                margin-top: 20px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                padding-left: 0px;
+            }
+
+            .task-header {
+                background-color: #06486F;
+                color: white;
+            }
+
+            .task-header h5 {
+                margin: 6 0 6 12;
+            }
+
+            #imageGallery {
+                white-space: nowrap;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                width: 100%;
+            }
+
+            .image-item {
+                flex: 0 0 auto;
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 10px;
+            }
+
+            .start-example-span{ 
+                margin-right: 20px;
+            }
+
+            .action-instance-card {
+                margin-top: 20px;
+            }
+
+            #galleryCard .container{
+                margin-top: 10px;
+            }
+
+            .image-item img {
+                width: 100%; /* Ensures the image fills the container width */
+                height: auto;
+            }
+
+            .image-item p {
+                text-align: center;
+                margin-top: 0;
+            }
+
+            .consent-header h4 {
+                margin: 10px;
+            }
+
+            body {
+                font-family: "Open Sans", "Roboto", sans-serif;
+                line-height: 1.25;;
+            }
+            textarea#feedback {
+                width: 100%;
+                border: 1px solid #ddd;
+            }
+            textarea#feedback:focus {
+                outline: none !important;
+                border-color: #85c8ea;
+            }
+
+            input#submitButton {
+                margin: auto;
+                display: block;
+                /* background-color: #2172a4; */
+                background-color: rgb(12, 173, 12);
+                color: #fff;
+                font-size: 1.125rem;
+                padding: .5rem 1rem;
+                cursor: pointer;
+                border-radius: 1rem;
+                margin-bottom: 20px;
+            }
+            input#submitButton:hover {
+                /* background-color: #06486F; */
+                background-color: green;
+            }
+
+            .required-asterisk {
+                color: red;
+            }
+
+            input#addActionButton {
+                margin: auto;
+                display: block;
+                background-color: #2172a4;
+                color: #fff;
+                font-size: 1.125rem;
+                padding: .5rem 1rem;
+                cursor: pointer;
+                border-radius: 1rem;
+            }
+            input#addActionButton:hover {
+                background-color: #06486F;
+            }
+            .task-instruction-ol li {
+                margin-bottom: 10px;
+            }
+
+            .not-sure-checkbox-margin-left {
+                margin-left: 10px;
+            }
+
+            input[type="radio"] {
+                cursor: pointer;
+            }
+
+            input[type="checkbox"] {
+                cursor: pointer;
+            }
+
+            .input-timestamp {
+                width: 50px;
+            }
+
+            /* #inputPlayerDesc1 { */
+            .input-player-desc {
+                width: 800px;
+            }
+
+            /* #inputAfterAction1 { */
+            .input-after-action {
+                width: 800px;
+            }
+
+            /* #inputBeforeAction1 { */
+            .input-before-action {
+                width: 800px;
+            }
+
+            .add-action-row {
+                margin-top: 10px;
+            }
+
+            .time-stamp-q-div {
+                margin-top: 20px;
+                margin-bottom: .1rem;
+            }
+
+            .time-stamp-div {
+                margin-bottom: .4rem;
+            }
+
+            div.question-field-group .card-body{
+                padding: 2rem 0 0;
+            }
+            div.example div.card-body {
+                padding: 1rem 0 0;
+            }
+            div.form-check, div.form-check label, div.form-check input {
+                cursor: pointer;
+            }
+            div.req-obj-container div.card-body {
+                padding: 0;
+            }
+            div.req-obj-fields-container {
+                padding-left: 0;
+            }
+            span.highlight {
+                font-weight: bold;
+                color: darkslateblue;
+            }
+            span.emphasize {
+                font-style: italic;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+            span.underline {
+                text-decoration: underline;
+            }
+            .sport-name-div {
+                margin-top: 10px;
+            }
+            .container {
+                padding:0;
+            }
+            .card-header {
+                padding: .25rem .5rem;
+            }
+            .card {
+                margin-bottom: 3px;
+            }
+            .card-body {
+                padding-top: .75rem;
+                padding-bottom: 0;
+            }
+            .panel {
+                padding: 10px;
+                margin-bottom: 3px;
+                margin-top: 5px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                font-size: 11pt;
+            }
+
+            span.header {
+                /* font-weight: bold; */
+                font-size: larger;
+            }
+            span.larger {
+                font-size: larger;
+            }  
+            span.optional {
+                font-style: italic;
+            }
+
+            .margin-top-li li {
+                margin-top: 5px;
+            }
+
+            /* INPUT FORMATTING */ 
+            .question-container {
+                padding-bottom: 2px;
+                margin-bottom: 4px;
+                margin-left: 0;
+                margin-right: -5px;
+            }
+
+            .choicebox {
+                padding-right: 1px;
+                padding-left: 1.5rem;
+                text-align: left;
+                margin-right: -5px;
+                margin-left:-5px;
+            }
+
+            .form-check {
+                padding-left:0;
+                text-align: left;
+                text-align-last: left;
+            }
+            .form-check-input {
+                margin-left:0;
+                position: relative;
+                text-align-last: left;
+            }
+
+            .task-body {
+                margin-top: 10px;
+            }
+
+            .consent {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding: 0;
+            }
+
+            /* MULTIMODAL INPUT*/
+            .video-container {
+                position: relative;
+                width: 100%; /* Relative width */
+                height: 600px; /* Absolute height */
+                overflow: hidden; /* Ensures no content spills out */
+            }
+
+            .video-container video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .frames-card{
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            .segment-container {
+                position: relative;
+                width: 100%; /* Relative width */
+                height: 200px; /* Absolute height */
+                overflow: hidden; /* Ensures no content spills out */
+            }
+
+            .segment-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .drawing-class {
+                height:0;
+            }
+
+            .segmentation {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height:100%;
+                width:100%;
+            }
+            .action-header {
+                cursor: pointer;
+            }
+            .task-container {
+                background-color:#85c8ea;
+            }
+            .time-input-group {
+                margin-left: 0;
+            }
+        </style>
+        <script>
+            $( document ).ready(function() {
+                $('#submitButton').on('click', function () {
+                        return true;
+                    });
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const baseGallery = document.getElementById('imageGallery');
+                let currentRow = document.createElement('div');
+                currentRow.className = 'row';
+                baseGallery.appendChild(currentRow);
+
+                let imageData = [];
+                for (let i = 1; i <= 20; i++) {
+                    const frameTime = 0.5 * i;
+                    let obj = {
+                        'url': 'https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_frames/${segment_id1}/frame' + i.toString() + '.jpg',
+                        // url: 'https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_frames/-Elfg5DpgWQ_0_13/frame' + i.toString() + '.jpg',
+                        timestamp: 'T= ' + frameTime + 's'
+                    };
+                    imageData.push(obj); // Append the formatted string to the array
+                }
+
+                imageData.forEach((data, index) => {
+                    // Create a column for each image
+                    const col = document.createElement('div');
+                    col.className = 'col-3'; // Bootstrap column to occupy 2 of the 12 grid spaces
+                    // const timestampValue = ((index + 1) * 0.5).toFixed(1);
+                    
+                    // Create a link for the image
+                    const link = document.createElement('a');
+                    link.href = data.url;
+                    link.target = '_blank'; // Opens the link in a new tab
+                    
+                    // Create the image element
+                    const img = new Image();
+                    img.src = data.url;
+                    img.className = 'img-fluid'; // Responsive image class
+                    img.alt = "Image"; // Accessibility text
+                    
+                    // Append the image to the link, and the link to the column
+                    link.appendChild(img);
+                    col.appendChild(link);
+                    
+                    // Create and append the timestamp text below the image
+                    const timestamp = document.createElement('p');
+                    // timestamp.textContent = data.timestamp;
+                    timestamp.textContent = data.timestamp;
+                    // make timestamp bold
+                    timestamp.style.fontWeight = 'bold';
+                    timestamp.className = 'text-center'; // Center-aligns the text
+                    col.appendChild(timestamp);
+                    
+                    // Append the column to the current row
+                    currentRow.appendChild(col);
+                    
+                    // Check if it's time to start a new row (every 6 images)
+                    if ((index + 1) % 4 === 0 && index + 1 < imageData.length) {
+                        currentRow = document.createElement('div');
+                        currentRow.className = 'row';
+                        baseGallery.appendChild(currentRow);
+                    }
+                });
+            });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const container = document.getElementById('actionInstances');
+
+                document.getElementById('addActionButton').addEventListener('click', function() {
+                    // State variable to keep track of the number of action cards
+                    let actionCount = document.querySelectorAll('.action-instance-card').length;
+                    
+                    // Get the container where the new card will be appended
+                    // let container = document.getElementById('actionInstances');
+                    
+                    // Clone the first action card
+                    let originalCard = document.querySelector('.action-instance-card');
+                    let newCard = originalCard.cloneNode(true);
+
+                    // set the id of the new card to action-card<ACTION_COUNT>
+                    
+                    // Increment action count to create unique IDs
+                    actionCount++;
+                    
+                    // Update new card's IDs and related attributes
+                    newCard.id = 'actionCard' + actionCount;
+                    newCard.querySelector('.card-header').setAttribute('data-target', '#action' + actionCount);
+                    newCard.querySelector('.card-header').setAttribute('aria-controls', 'action' + actionCount);
+                    newCard.querySelector('.collapse').id = 'action' + actionCount;
+                    newCard.querySelector('h4').textContent = 'Action #' + actionCount; // Update the action number in the h4 tag
+                    // newCard.getElementById('')
+
+                    let removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'Remove';
+                    removeBtn.setAttribute('type', 'button');
+                    removeBtn.classList.add('remove-action', 'btn', 'btn-danger');
+                    removeBtn.style.display = 'block';  // Use block display
+                    // removeBtn.style.margin = 'auto';    // Auto margins to center horizontally
+                    // removeBtn.style.width = 'fit-content';  // Ensure the button width is only as wide as its content
+                    removeBtn.style.float = 'left';
+                    // add margin bottom
+                    removeBtn.style.marginBottom = '10px';
+                    newCard.querySelector('.action-form').appendChild(removeBtn);
+
+                    newCard.querySelectorAll('input').forEach(function(input, index) {
+                        input.value = ''; // Clear the input value
+                        // if (input.name.startsWith('start_task') || input.name.startsWith('end_task')) {
+                        // if (input.name.startsWith('startTask') || input.name.startsWith('endTask')) {
+                        let baseName = input.name.split('1')[0];
+                        input.name = baseName + actionCount;
+                        let baseId = input.id.split('1')[0];
+                        input.id = baseId + actionCount;
+                        // if type of input is checkbox, uncheck it
+                        if (input.type === 'checkbox') {
+                            input.checked = false;
+                        }
+                    });
+
+                    // Append the new card to the container
+                    container.appendChild(newCard);
+                });
+
+                // Delegate remove functionality from the container
+                container.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-action')) {
+                        e.target.closest('.action-instance-card').remove(); // Remove the card
+                    }
+                });
+
+                // Function to renumber action cards
+                function renumberActionCards() {
+                    const allCards = container.querySelectorAll('.action-instance-card');
+                    allCards.forEach((card, index) => {
+                        const newIndex = index + 1;
+                        card.querySelector('h4').textContent = 'Action #' + (index + 1);
+                        card.querySelector('.collapse').id = 'action' + (index + 1);
+                        card.querySelector('.card-header').setAttribute('data-target', '#action' + (index + 1));
+                        card.querySelector('.card-header').setAttribute('aria-controls', 'action' + (index + 1));
+
+                        card.querySelectorAll('input').forEach(input => {
+                            let baseId = input.id.match(/^[^\d]+/)[0]; // extract the base ID without number
+                            let baseName = input.name.match(/^[^\d]+/)[0]; // extract the base name without number
+                            input.id = baseId + newIndex;
+                            input.name = baseName + newIndex;
+                        });
+                    });
+                }
+
+                // Event delegation for removing cards
+                container.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-action')) {
+                        e.target.closest('.action-instance-card').remove();
+                        renumberActionCards();  // Renumber after removing a card
+                    }
+                });
+            });
+        </script>
+        <form name='mturk_form' method='post' id='mturk_form' 
+        action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' 
+        name='assignmentId' id='assignmentId'/>
+        <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+    </head>
+
+    <body>
+        <crowd-form>
+            <section class="container" id="Survey">
+                <div id="workContent">
+                    <div class="col-xl-12" id="hitinfo">
+                        <div class="accordion col-12">
+                            <!-- INSTRUCTIONS START -->
+                            <div class="card">
+                                <div class="card-header" id="instructionsHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                            <h5 class="instruction-header">Instructions (click to expand/collapse)</h5>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <div class="card-content">
+                                            <h5><b>Overview</b></h5>
+
+                                            <p>Thank you for participating. In this task, you will watch a <span class='emphasize'>short sports video (maximum 30 seconds)</span> and <span class='emphasize'> specify the start and end timestamp in which the given action happens.</span>.</p>
+
+                                            <p> We have provided <b>detailed information</b> which will help you recognize and identify the action if you're <b>unfamiliar</b> with it. You can <b>also first play the given video</b> which might give a sense of what the action looks like if it is present in it.
+                                                <b>Feel free to use external resources (e.g. google search)</b> to have a better grasp of the action if necessary.
+                                            </p>
+
+                                            <hr class="solid">
+                                            <h5>Your Task:</h5>
+                                            <!-- <p>You have to find a <span class='emphasize'>segment in the video (specified by its start and end time in seconds) </span> in which the following conditions are met: </p> -->
+                                            <ol class="task-instruction-ol">
+                                                <li><b>Player identification:</b> Identify and describe the person who is performing the action via <span class='emphasize'>unique attributes</span>. Note that only the person who is performing the action in the segment 
+                                                    should possess those attributes. Example of good identifiers:</li>
+                                                    <ul class="margin-top-li">
+                                                        <li>The name or number on their jersey if visible.</li>
+                                                        <li>Color of their jersey if it identifies the player uniquely.</li>
+                                                        <li>Physical attributes if it's unique to them.</li>
+                                                        <li>Things that they do <span class="emphasize">other than the given action</span> (e.g. before or after it).</li>
+                                                        <li>Combination of above.</li>
+                                                    </ul>
+                                                <li><b>Identify what happens right before and right after the given action</b>: Some examples of what can happen before and after the action are: 
+                                                    <ul class="margin-top-li">
+                                                        <li>Player number 2 scores a goal.</li>
+                                                        <!-- <li>Player 4 dribbling the ball.</li> -->
+                                                        <li>Player with blond hair performs a small hesitation.</li>
+                                                        <li>Player 5 Talking to his teammates.</li>
+                                                    </ul>
+                                                    If you think there is nothing specific happening before and after the action you can write "none" (please see the examples).
+                                                <li><b>Specify an appropriate start and end time stamp:</b> Based on the player identifiers and what happens before and after the action, <span class='emphasize'>specify a start time and end time (in seconds) for a segment that covers all of the above information.</span></li>
+                                            </ol>
+
+                                            <hr class="solid">
+
+                                            <h5>Please Note:</h5>
+                                            <ul class="margin-top-li">
+                                                <li><b>For action segmentation</b></li>
+                                                <ul class="margin-top-li">
+                                                    <li>If you think the given action <span class='emphasize'>does not happen</span> in the video, check the corresponding checkbox next to the video. But still provide the start and end time of any important action that you think happens in the video.</li>
+                                                    <li>If you think the action happens multiple times in the video, <span class='emphasize'> click on "+ Add action" button to add more action cards and include them there.</span></li>
+                                                    <li>If the action is a team action (i.e. multiple players are involved in it) <span class='emphasize'> the description must be about all of those players (see alley-oop dunk example).</span></li>
+                                                    <!-- <li>Select <span class="badge badge-success">Yes</span> <b>only if</b> you can visually see the action happening in the video, rather than e.g. person talking about the action.</li> -->
+                                                    <!-- <li>Select <span class="badge badge-warning">Maybe</span> if the action occurred or if the video content was unclear or ambiguous, e.g. a portion of the action was partially visible.</li> -->
+                                                    <!-- <li><b>If the video quality is too poor to see the action</b>, select <span class="badge badge-danger">No</span>.</li> -->
+                                                    <!-- <li><b>If the action is correct but is for different sports</b>, select <span class="badge badge-danger">No</span>.</li> -->
+                                                </ul>
+                                            </ul>
+                                            Here are five examples on how to do the task:
+                                            <div class="card">
+                                                <div class="card-header example-header" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="false" aria-controls="examples">
+                                                    <div class="action-header">
+                                                        <span class="header examples"><h4>Examples (click to expand/collapse)</h4></span>
+                                                    </div>
+                                                </div>
+                                                <div class="collapse" id="examples">
+                                                    <div class="row mb-5 mt-5">
+                                                        <!--VIDEO-->
+                                                        <div class="col-6">
+                                                            <div class="video-container">
+                                                                <video controls>
+                                                                    <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_segments/TTb2d6bMBTQ_0_30.mp4">
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div>
+                                                                <h5>#1. <b>Baseline dunk</b> in <b>Basketball</b></h5>
+                                                                <p>A baseline dunk in basketball is when a player jumps to score by slamming the ball into the hoop from the side of the court near the boundary line. This move requires the player to leap from a narrow area beside the court, making it both challenging and visually impressive.</p>
+                                                                <p>Player description: <span class="emphasize">Player wearing white jersey #6</span></p>
+                                                                <p>What happens before the action: <span class="emphasize">Player #15 dribbling and passing the ball</span></p>
+                                                                <p>What happens after the action: <span class="emphasize">none</span></p>
+                                                                <p><span class="start-example-span">Start time: <span class="emphasize">2</span></span><span>End time: <span class="emphasize">10</span></span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-5 mt-5">
+                                                        <!--VIDEO-->
+                                                        <div class="col-6">
+                                                            <div class="video-container">
+                                                                <video controls>
+                                                                    <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/segmentation_examples/stutter_step.mp4">
+                                                                    <!-- <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_segments/M88nk1yoS2c_1339_1369.mp4"> -->
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div>
+                                                                <h5>#2. <b>Stutter Step</b> in <b>Basketball</b></h5>
+                                                                <p>Stutter step is a basketball move that involves a player taking a series of short, choppy steps in order to fake out a defender. The move is often used to create space between the offensive player and the defender, allowing the offensive player to drive to the basket or take a jump shot.</p>
+                                                                <p>Player description: <span class="emphasize">Red player in control of the ball</span></p>
+                                                                <p>What happens before the action: <span class="emphasize">none</span></p>
+                                                                <p>What happens after the action: <span class="emphasize">Red player jumps and makes a shot (jump shot)</span></p>
+                                                                <p><span class="start-example-span">Start time: <span class="emphasize">3.5</span></span><span>End time: <span class="emphasize">6</span></span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row mb-5 mt-5">
+                                                        <!--VIDEO-->
+                                                        <div class="col-6">
+                                                            <div class="video-container">
+                                                                <video controls>
+                                                                    <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/segmentation_examples/cross.mp4">
+                                                                    <!-- <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_segments/M88nk1yoS2c_1339_1369.mp4"> -->
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div>
+                                                                <h5>#3. <b>Cross</b> in <b>Soccer</b></h5>
+                                                                <p>A cross in soccer refers to a type of pass where the ball is kicked from the side of the field, typically near the sidelines, towards the opposing team's goal area. This technique is usually aimed at setting up a teammate for a scoring opportunity in front of the goal.</p>
+                                                                <p>Player description: <span class="emphasize">Player wearing red and white jersey with number 4</span></p>
+                                                                <p>What happens before the action: <span class="emphasize">Player number 7 passes the ball</span></p>
+                                                                <p>What happens after the action: <span class="emphasize">A player wearing red and white jersey scores a goal</span></p>
+                                                                <p><span class="start-example-span">Start time: <span class="emphasize">0</span></span><span>End time: <span class="emphasize">5</span></span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row mb-5 mt-5">
+                                                        <!--VIDEO-->
+                                                        <div class="col-6">
+                                                            <div class="video-container">
+                                                                <video controls>
+                                                                    <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/segmentation_examples/dummy.mp4">
+                                                                    <!-- <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_segments/M88nk1yoS2c_1339_1369.mp4"> -->
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div>
+                                                                <h5>#4. <b>Dummy</b> in <b>Soccer</b></h5>
+                                                                <p>In soccer, a "dummy" is a deceptive move where a player lets the ball pass through their legs or steps over it, pretending to play it without making contact. This tricks opponents and allows the ball to continue to a teammate, creating opportunities for advancing the play or scoring.</p>
+                                                                <p>Player description: <span class="emphasize">Player wearing jersey with number 10</span></p>
+                                                                <p>What happens before the action: <span class="emphasize">Player 13 passes the ball</span></p>
+                                                                <p>What happens after the action: <span class="emphasize">Player wearing black jersey scores a goal</span></p>
+                                                                <p><span class="start-example-span">Start time: <span class="emphasize">0</span></span><span>End time: <span class="emphasize">3.5</span></span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-5 mt-5">
+                                                        <!--VIDEO-->
+                                                        <div class="col-6">
+                                                            <div class="video-container">
+                                                                <video controls>
+                                                                    <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/segmentation_examples/sweep_stroke_example.mp4">
+                                                                    <!-- <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_segments/M88nk1yoS2c_1339_1369.mp4"> -->
+                                                                </video>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div>
+                                                                <h5>#5. <b>Sweep stroke</b> in <b>Kayaking</b></h5>
+                                                                <p>A sweep stroke in kayaking is a paddling technique used to turn the kayak. By performing a long, arcing stroke from the bow to the stern on one side of the kayak, the paddler can change the direction of the boat efficiently.</p>
+                                                                <p>Player description: <span class="emphasize">The woman wearing sunglasses</span></p>
+                                                                <p>What happens before the action: <span class="emphasize">The woman paddles once on her left side</span></p>
+                                                                <p>What happens after the action: <span class="emphasize">none</span></p>
+                                                                <p><span class="start-example-span">Start time: <span class="emphasize">2.5</span></span><span>End time: <span class="emphasize">7</span></span></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="solid"> 
+                                            <p style="font-size:12pt;"><span class="badge badge-danger">WARNING</span> Current employees of the <strong>University of Washington</strong>, family members of UW employees, and UW students involved in this particular research are <strong>not eligible</strong> to complete this HIT.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- INSTRUCTIONS END -->
+                            <!-- EXAMPLE START  -->
+                            <div class="card" style="background-color:#f9f9f9;">
+                                <!-- <div class="card-header" id="examplesHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                            Examples (click to expand)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <h5> Examples</h5>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <!-- <div class="col-12 consent">
+                                <div class="card">
+                                    <div class="consent-header"><h4><b>Consent</b></h4></div>
+                                    <div class="card-body">
+                                        <span><b>Consent to the task to participate</b></span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">Checking this box indicates that you have read and understood the information above, are 18 years or older, and agree to participate in our study.</label>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div> -->
+
+                            <!-- EXAMPLE END  -->
+                        </div>
+                        <br>
+                        <br>
+                        <!-- MTURK INPUT START -->
+                        <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header task-header"><h5>TASK</h5></div>
+                                        <div class="card-body">
+                                            <div class="task-domain-action">
+                                                <!-- ACTION DESCRIPTION   -->
+                                                <h4>Sport: ${domain}</h4>
+                                                <h4>Action: ${action}</h4>
+                                            </div>
+                                            <div class="mb-4 task-info">
+                                                <div class="card">
+                                                    <div class="card-header" type="button" data-toggle="collapse" data-target="#action" aria-expanded="false" aria-controls="action">
+                                                        <div class="action-header">
+                                                            <span class="header action"><h4>Information on "${action}" (click to expand/collapse)</h4></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="collapse show" id="action">
+                                                        <div class="card-body">
+                                                            <div class="mb-3">
+                                                                <p>${definition}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4> 1. Segmentation </h4>
+
+                                            <!-- Task 1 -->
+                                            <div class="panel">
+                                                <h5> Video 1: ${title1} <a href="https://www.youtube.com/watch?v=${id1}&t=${start1}" target="_blank">(youtube link)</a></h5>
+
+                                                <div class="row">
+                                                    <!--VIDEO-->
+                                                    <div class="col-12">
+                                                        <div class="video-container">
+                                                            <video controls>
+                                                                <source src="${video_path1}">
+                                                                <!-- <source src="https://storage.googleapis.com/video_llm/data/action-benchmark/candidate_segments/M88nk1yoS2c_1339_1369.mp4"> -->
+                                                            </video>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                    <!-- Verification  -->
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="question-container">
+                                                            <div class="row mt-4">
+                                                                <div class="col-lg-12">
+                                                                <div class="task-body">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <div>
+                                                                                <input class="form-check-input" type="checkbox" id="noActionsCheckbox" name="noActionCheckbox1" value="Yes" style="text-align:center;">
+                                                                                <span class="emphasize">${action}</span> Does not happen in the video.
+                                                                            </div>
+                                                                            <div class="sport-name-div">
+                                                                                if <span class="emphasize">${action}</span> happens but it's in a different sport name the sport:
+                                                                                <input type="text" id="inputSportName1" class="input-sport-name" name="sportName1">
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="action-instances" id="actionInstances">
+                                                    <div class="card action-instance-card" id="actionCard1">
+                                                        <div class="card-header" type="button" data-toggle="collapse" data-target="#action1" aria-expanded="false" aria-controls="action1">
+                                                            <div class="action-header">
+                                                                <span class="header"><h4 class="acttion-h4-header">Action #1</h4></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="collapse show" id="action1">
+                                                            <div class="action-form">
+                                                                <label for="name">What is the name of the action?<span class="text-danger font-weight-bold"> (only answer if the action happening is not ${action}!)</span></label>
+                                                                <input type="text" id="nameAction1" class="input-before-action" name="nameAction1" placeholder="Optional">
+                                                                <input type="checkbox" class="not-sure-checkbox not-sure-checkbox-margin-left" name="notSureAction1" id="notSureAction1" data-related-input="inputBeforeAction1"> Not sure
+                                                                <div>
+                                                                    <label for="name">Description of person(s) performing the action:<span class="required-asterisk">*</span></label>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="text" id="inputPlayerDesc1" class="input-player-desc" name="playerDesc1" placeholder="" required>
+                                                                    <input type="checkbox" class="not-sure-checkbox not-sure-checkbox-margin-left" name="notSurePlayerDesc1" id="notSurePlayerDesc1" data-related-input="inputPlayerDesc1"> Not sure
+                                                                </div>
+                                                                <label for="name">What happens before the action?<span class="required-asterisk">*</span></label>
+                                                                <input type="text" id="inputBeforeAction1" class="input-before-action" name="beforeAction1" placeholder="" required>
+                                                                <input type="checkbox" class="not-sure-checkbox not-sure-checkbox-margin-left" name="notSureBeforeAction1" id="notSureBeforeAction1" data-related-input="inputBeforeAction1"> Not sure
+                                                                <label for="name">What happens after the action?<span class="required-asterisk">*</span></label>
+                                                                <input type="text" id="inputAfterAction1" class="input-after-action" name="afterAction1" placeholder="" required>
+                                                                <input type="checkbox" class="not-sure-checkbox not-sure-checkbox-margin-left" name="notSureAfterAction1" id="notSureAfterAction1" data-related-input="inputAfterAction1"> Not sure
+                                                                <div class="time-stamp-q-div">
+                                                                    What is a good start and end time stamp of a segment in the video where all the information above are visible?
+                                                                </div>
+                                                                <div class="time-stamp-div">
+                                                                    <label for="name">Start time:<span class="required-asterisk">*</span></label>
+                                                                    <input type="number" class="input-timestamp" step="0.1" name="startTask1" id="startTask1" required>
+                                                                    <label for="name">End time:<span class="required-asterisk">*</span></label>
+                                                                    <input type="text" class="input-timestamp" step="0.1" name="endTask1" id="endTask1" required>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row add-action-row">
+                                                    <div class="col-2 offset-5">
+                                                        <!-- <input id="addActionButton" type="submit" value="+ Add action"> -->
+                                                        <!-- <input id="addActionButton" value="+ Add action"> -->
+                                                        <button type="button" class="btn btn-primary" id="addActionButton">+ Add action</button>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4 frames-container">
+                                                    <div class="card ">
+                                                        <div class="card-header" type="button" data-toggle="collapse" data-target="#frames" aria-expanded="false" aria-controls="frames">
+                                                            <div class="action-header">
+                                                                <span class="header frames"><h4>Frames (click to expand/collapse)</h4></span> 
+                                                            </div>
+                                                        </div>
+                                                        <div class="collapse" id="frames">
+                                                            <div class="card-body" id="galleryCard">
+                                                                <!-- <div class="row">
+                                                                    <div id="imageGallery" class="d-flex overflow-auto">
+                                                                    </div>
+                                                                </div> -->
+                                                                <div class="container">
+                                                                    <div id="imageGallery" class="row">
+                                                                        <!-- JavaScript will inject images here -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel">
+                                                    <h4> 2. Identification</h4>
+                                                    <div class="col-12">
+                                                        <div class="question-container">
+                                                            <div class="row">
+                                                                <div class="col-9">
+                                                                    <b>Q1: Were you able to identify the action from <span class="emphasize">just reading the description</span>?</b>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label mr-3">
+                                                                            <input class="form-check-input" type="radio" name="identify1" value="Yes" style="text-align:center;" required>
+                                                                            <span class="badge badge-success">Yes</span>
+                                                                        </label>
+                                                                        <label class="form-check-label">
+                                                                            <input class="form-check-input" type="radio" name="identify1" value="No">
+                                                                            <span class="badge badge-danger">No</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="question-container">
+                                                            <div class="row">
+                                                                <div class="col-9">
+                                                                    <b>Q2: Were you able to identify the action from <span class="emphasize">reading the description and watching the video</span>?</b>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label mr-3">
+                                                                            <input class="form-check-input" type="radio" name="identify2" value="Yes" style="text-align:center;" required>
+                                                                            <span class="badge badge-success">Yes</span>
+                                                                        </label>
+                                                                        <label class="form-check-label">
+                                                                            <input class="form-check-input" type="radio" name="identify2" value="No">
+                                                                            <span class="badge badge-danger">No</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- TASK END -->
+                                        <!--OPTIONAL FEEDBACK-->
+                                        <div class="card feedback-card">
+                                            <h4 class="card-header">Optional feedback? &nbsp; &nbsp;<a data-toggle="collapse" href="#feedback"
+                                                                                                    style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+                                            </h4>
+                                            <div id="feedback" class="collapse" style="margin:5px">
+                                                <div class="card-body">
+                                                <p>If anything about the HIT was unclear, please comment below. I'd like to make my HITs easier for future workers, so I really appreciate feedback! Note: no need to point out incorrect/missing detections here. </p>
+                                                <textarea class="form-control" rows="2" name="commentbox"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="problems"> </div>
+                                        <!-- SUBMIT BUTTON -->
+                                        <div class="row mt-5">
+                                            <div class="col-2 offset-5">
+                                                <input id="submitButton" type="submit" value="Submit">
+                                            </div>
+                                        </div> 
+                                    </div>
+                        </div>
+                    </div>
+            </section>
+        </crowd-form>
+    </body>
+</html>
