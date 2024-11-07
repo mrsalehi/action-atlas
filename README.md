@@ -6,7 +6,6 @@
 This is the official repository for the ActionAtlas benchmark. The benchmark evaluates large multimodal-models on videos of complex actions in specialized domains. This first version of the benchmark focuses on sports moves.
 
 
-
 ## Installation
 You can install the package from source with pip or poetry:
 ```bash
@@ -14,7 +13,7 @@ pip install -e .
 ```
 
 ## Usage
-1. Download the metadta either from this [google drive](https://drive.google.com/file/d/1ueh5gqYg0WqQ_CFxjxsjcn8rx9wwN9Gi/view?usp=drive_link) or from [HuggingFace](https://huggingface.co/datasets/action_atlas)
+1. Download the metadta either from this [google drive](https://drive.google.com/file/d/1ueh5gqYg0WqQ_CFxjxsjcn8rx9wwN9Gi/view?usp=sharing) or from [HuggingFace](https://huggingface.co/datasets/mrsalehi/ActionAtlas-v1.0)
 
 2. Each sample in the metadata contains a YouTube ID and the metadata of that video. Download the video from YouTube. Please take a look at `action_atlas/download_yt_videos.py` provided in this repo.
 
@@ -45,12 +44,12 @@ Note that after running the above command all videos in ActionAtlas will be stor
 If you use this dataset in your research, please cite the following paper:
 ```
 @misc{salehi2024actionatlasvideoqabenchmarkdomainspecialized,
-      title={ActionAtlas: A VideoQA Benchmark for Domain-specialized Action Recognition}, 
+      title={ActionAtlas: A VideoQA Benchmark for Domain-specialized Action Recognition},
       author={Mohammadreza Salehi and Jae Sung Park and Tanush Yadav and Aditya Kusupati and Ranjay Krishna and Yejin Choi and Hannaneh Hajishirzi and Ali Farhadi},
       year={2024},
       eprint={2410.05774},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2410.05774}, 
+      url={https://arxiv.org/abs/2410.05774},
 }
 ```
